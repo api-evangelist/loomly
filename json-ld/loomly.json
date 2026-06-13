@@ -1,0 +1,31 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Loomly",
+  "description": "Loomly is a brand success platform with a REST API for managing social media content calendars, post ideas, approval workflows, publishing, and audience engagement analytics. It supports 10+ social channels including Facebook, Instagram, LinkedIn, TikTok, YouTube, Pinterest, Google Business Profile, and Threads, enabling marketing teams to collaborate, schedule, and analyze content from a unified platform.",
+  "url": "https://www.loomly.com",
+  "sameAs": [
+    "https://github.com/loomly",
+    "https://www.linkedin.com/company/loomly",
+    "https://x.com/LoomlySocial"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.loomly.com/pricing"
+  },
+  "potentialAction": {
+    "@type": "Action",
+    "name": "API Documentation",
+    "target": "https://www.loomly.com/integrations"
+  },
+  "keywords": [
+    "Social Media",
+    "Content Calendar",
+    "Scheduling",
+    "Approval Workflows",
+    "Analytics",
+    "Brand Management",
+    "Publishing",
+    "Community Management"
+  ]
+}
