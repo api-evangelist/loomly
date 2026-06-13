@@ -1,0 +1,72 @@
+aid: loomly
+name: Loomly
+description: >-
+  Loomly is a brand success platform with a REST API for managing social media
+  content calendars, post ideas, approval workflows, publishing, and audience
+  engagement analytics. It supports 10+ social channels including Facebook,
+  Instagram, LinkedIn, TikTok, YouTube, Pinterest, Google Business Profile, and
+  Threads, enabling marketing teams to collaborate, schedule, and analyze content
+  from a unified platform.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/loomly/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+type: Index
+tags:
+  - Social Media
+  - Content Calendar
+  - Scheduling
+  - Approval Workflows
+  - Analytics
+  - Brand Management
+  - Publishing
+  - Community Management
+apis:
+  - aid: loomly:loomly-api
+    name: Loomly API
+    description: >-
+      REST API for the Loomly brand success platform, providing programmatic
+      access to social media calendars, posts, approval workflows, publishing
+      scheduling, and analytics. Authenticated via OAuth 2.0 Bearer tokens.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.loomly.com
+    baseURL: https://api.loomly.com/v1
+    tags:
+      - Social Media
+      - Content Calendar
+      - Posts
+      - Scheduling
+      - Approval Workflows
+      - Analytics
+    properties:
+      - type: Documentation
+        url: https://www.loomly.com/integrations
+      - type: Authentication
+        url: https://www.loomly.com/features
+common:
+  - type: Website
+    url: https://www.loomly.com
+  - type: Documentation
+    url: https://www.loomly.com/integrations
+  - type: GitHubOrg
+    url: https://github.com/loomly
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/loomly
+  - type: Blog
+    url: https://www.loomly.com/blog
+  - type: Pricing
+    url: https://www.loomly.com/pricing
+  - type: StatusPage
+    url: https://status.loomly.com
+  - type: X
+    url: https://x.com/LoomlySocial
+  - type: Plans
+    url: plans/loomly-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/loomly-rate-limits.yml
+  - type: FinOps
+    url: finops/loomly-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

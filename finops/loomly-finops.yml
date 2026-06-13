@@ -1,0 +1,51 @@
+name: Loomly FinOps
+description: Financial operations and cost management guidance for teams using Loomly's brand success platform.
+url: https://www.loomly.com/pricing
+cost_model: subscription
+billing_cycle_options:
+  - monthly
+  - annual
+currency: USD
+plans:
+  - name: Starter
+    monthly_cost: 65
+    annual_monthly_cost: 49
+    annual_total: 588
+    cost_drivers:
+      - social_accounts: Up to 12 included; adding a 13th triggers mandatory upgrade to Beyond plan.
+      - users: Up to 3 included; adding a 4th triggers mandatory upgrade to Beyond plan.
+    upgrade_trigger_cost_impact:
+      from_plan: Starter (annual)
+      to_plan: Beyond (annual)
+      cost_increase_monthly: 200
+      cost_increase_percent: 408
+      notes: The jump from Starter to Beyond represents a 408% cost increase per month on annual billing.
+  - name: Beyond
+    monthly_cost: 332
+    annual_monthly_cost: 249
+    annual_total: 2988
+    cost_drivers:
+      - social_accounts: Up to 60 included; exceeding 60 requires Enterprise plan.
+      - users: Unlimited users included.
+  - name: Enterprise
+    monthly_cost: custom
+    annual_total: custom
+    cost_drivers:
+      - Negotiated based on social account count and organizational scale.
+savings_opportunities:
+  - description: Annual billing provides 25% savings versus monthly billing on all plans.
+    action: Switch to annual commitment at the start of a billing period.
+    savings_percent: 25
+  - description: Nonprofit organizations qualify for a 50% lifetime discount.
+    action: Submit documentation to Loomly support to apply the nonprofit discount.
+    savings_percent: 50
+  - description: A hidden free tier with limited features is available within the app.
+    action: Navigate to Account Settings > Billing within the Loomly app and select the free plan.
+    cost: 0
+cost_optimization_notes:
+  - Audit social account connections regularly to stay under the 12-account Starter limit and avoid forced upgrade.
+  - Keep user count at 3 or fewer on Starter to prevent mandatory tier escalation.
+  - Evaluate annual vs. monthly billing based on expected retention; annual billing saves 25% with 12-month commitment and no early termination option.
+  - Enterprise pricing is negotiated and may offer favorable per-account rates at scale.
+vendor_context:
+  - Loomly was acquired by Bending Spoons on January 2, 2025. Bending Spoons has a documented track record of raising prices and removing features post-acquisition; monitor pricing announcements closely.

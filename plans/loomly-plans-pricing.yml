@@ -1,0 +1,79 @@
+name: Loomly Plans and Pricing
+description: Pricing plans for Loomly, the brand success platform for social media content management, scheduling, approval workflows, and analytics.
+url: https://www.loomly.com/pricing
+plans:
+  - name: Starter
+    description: For small teams managing social media across a limited number of accounts.
+    price_monthly: 65
+    price_annual_monthly: 49
+    price_annual_total: 588
+    currency: USD
+    billing_options:
+      - monthly
+      - annual
+    annual_savings_percent: 25
+    limits:
+      social_accounts: 12
+      users: 3
+      calendars: unlimited
+    features:
+      - AI Assistant chat
+      - Post scheduling
+      - Approval workflows
+      - Advanced analytics
+      - Link shorteners
+      - Media editor
+      - Canva export
+      - Slack and Microsoft Teams notifications
+      - Post ideas and inspiration feed
+      - Hashtag suggestions
+      - Content library
+  - name: Beyond
+    description: For growing teams needing unlimited users, more social accounts, and advanced customization.
+    price_monthly: 332
+    price_annual_monthly: 249
+    price_annual_total: 2988
+    currency: USD
+    billing_options:
+      - monthly
+      - annual
+    annual_savings_percent: 25
+    popular: true
+    limits:
+      social_accounts: 60
+      users: unlimited
+      calendars: unlimited
+    features:
+      - All Starter features
+      - Custom branding
+      - Custom roles and workflows
+      - Hashtag manager
+      - Calendar two-factor authentication enforcement
+      - Extended AI monthly usage
+      - Social listening
+      - Priority support
+  - name: Enterprise
+    description: For large organizations requiring 61+ social accounts and scaled pricing with priority support.
+    price_monthly: custom
+    price_annual_monthly: custom
+    currency: USD
+    billing_options:
+      - annual
+      - custom
+    limits:
+      social_accounts: 61+
+      users: unlimited
+      calendars: unlimited
+    features:
+      - All Beyond features
+      - Priority support
+      - Friendly pricing at scale
+      - Dedicated account management
+discounts:
+  - type: nonprofit
+    description: Nonprofit organizations receive a 50% lifetime discount with proper documentation.
+    percent: 50
+notes:
+  - A hidden free tier is accessible within the app under Account Settings > Billing.
+  - Adding a 4th team member or 13th social account on Starter triggers a mandatory upgrade to Beyond.
+  - Loomly was acquired by Bending Spoons on January 2, 2025.

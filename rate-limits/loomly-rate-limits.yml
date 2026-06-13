@@ -1,0 +1,53 @@
+name: Loomly Rate Limits
+description: Rate limiting policies for the Loomly API, including the public status API and the core REST API for social media management.
+url: https://status.loomly.com/api
+limits:
+  - api: Loomly Status API
+    description: Public API for querying Loomly system status, component health, and incident notices.
+    base_url: https://status.loomly.com/api/v1
+    rate_limit:
+      requests_per_second: 10
+      policy: fair use
+    pagination:
+      max_records_per_page: 25
+      pagination_type: cursor
+      metadata: includes total count and next page URL
+    endpoints:
+      - path: /status
+        method: GET
+        description: Returns overall system state without component details.
+      - path: /components
+        method: GET
+        description: Lists paginated components with filtering for parent and child relationships.
+      - path: /notices
+        method: GET
+        description: Retrieves paginated incident and maintenance notices with filter capabilities.
+      - path: /notices/{id}
+        method: GET
+        description: Fetches detailed notice information including impacted components and update history.
+  - api: Loomly Core REST API
+    description: REST API for managing calendars, posts, approval workflows, and publishing.
+    base_url: https://api.loomly.com/v1
+    authentication: OAuth 2.0 Bearer Token
+    rate_limit:
+      notes: Specific rate limits for the core API are not publicly documented. Contact Loomly support for plan-specific rate limit details.
+    endpoints:
+      - path: /calendars
+        method: GET
+        description: List calendars accessible to the authenticated user.
+      - path: /posts
+        method: GET
+        description: List posts within accessible calendars.
+      - path: /posts
+        method: POST
+        description: Create a new post with content and scheduling parameters.
+      - path: /posts/{id}
+        method: PATCH
+        description: Update an existing post.
+      - path: /posts/{id}
+        method: DELETE
+        description: Delete a post.
+notes:
+  - The Status API (status.loomly.com/api) is publicly documented with a stated 10 req/s fair-use limit.
+  - Core API rate limits are not publicly disclosed; they may vary by plan.
+  - Webhooks are supported for real-time event notifications.
