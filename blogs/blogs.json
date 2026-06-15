@@ -1,6 +1,6 @@
 {
   "url": "https://www.loomly.com/blog",
-  "fetched": "2026-06-13",
+  "fetched": "2026-06-14T20:42:17Z",
   "posts": [
     {
       "title": "20 Best Marketing Podcasts of 2025",
@@ -52,5 +52,16 @@
       "url": "https://www.loomly.com/blog/boost-facebook-posts-visibility-by-scheduling-a-first-comment",
       "date": "2024-12-11"
     }
-  ]
+  ],
+  "repo": "loomly",
+  "feeds": [
+    {
+      "source": "https://www.linkedin.com/company/loomly",
+      "feed_url": "https://www.linkedin.com/company/loomly",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0
 }
