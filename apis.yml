@@ -7,7 +7,7 @@ description: >-
   Instagram, LinkedIn, TikTok, YouTube, Pinterest, Google Business Profile, and
   Threads, enabling marketing teams to collaborate, schedule, and analyze content
   from a unified platform.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/loomly/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -29,7 +29,7 @@ apis:
       REST API for the Loomly brand success platform, providing programmatic
       access to social media calendars, posts, approval workflows, publishing
       scheduling, and analytics. Authenticated via OAuth 2.0 Bearer tokens.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.loomly.com
     baseURL: https://api.loomly.com/v1
     tags:
