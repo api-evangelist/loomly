@@ -1,28 +1,38 @@
 aid: loomly
 name: Loomly
 description: >-
-  Loomly is a brand success platform with a REST API for managing social media
-  content calendars, post ideas, approval workflows, publishing, and audience
-  engagement analytics. It supports 10+ social channels including Facebook,
-  Instagram, LinkedIn, TikTok, YouTube, Pinterest, Google Business Profile, and
-  Threads, enabling marketing teams to collaborate, schedule, and analyze content
-  from a unified platform.
+  Loomly is a social media management and brand success platform for planning,
+  creating, approving, scheduling and publishing content across Facebook,
+  Instagram, LinkedIn, TikTok, YouTube, Pinterest, Snapchat, Threads, Bluesky and
+  Google Business Profile, with collaboration and approval workflows, a content
+  library, analytics and a community-management inbox. Loomly publishes no public
+  developer API, API reference or machine-readable specification. Its only
+  programmable surfaces are a partner-gated platform API reached through the
+  Loomly Zapier app (12 triggers, 2 actions) over an OAuth 2.0 authorization flow
+  at app.loomly.com, and a public read-only status API on status.loomly.com
+  operated by SorryApp. Loomly was acquired by Bending Spoons on 2 January 2025.
 accessModel:
-  pricing: enterprise
-  onboarding: unknown
+  pricing: freemium
+  onboarding: self-serve
   trial: false
-  try_now: false
+  try_now: true
   public: false
-  label: Enterprise
-  confidence: medium
+  label: Freemium · Self-serve signup
+  confidence: high
   source:
   - plans
-  generated: '2026-07-22'
+  - authentication
+  generated: '2026-08-13'
   method: derived
+  note: >-
+    These values describe access to the Loomly PRODUCT — a free plan and
+    self-serve signup at app.loomly.com. They do not describe API access: there
+    is no public API program, no self-serve API key, and no way to try an API
+    without going through the Zapier app's OAuth flow with a Loomly account.
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/loomly.png
 url: https://raw.githubusercontent.com/api-evangelist/loomly/refs/heads/main/apis.yml
 created: '2026-06-13'
-modified: '2026-06-13'
+modified: '2026-08-13'
 specificationVersion: '0.19'
 type: Index
 tags:
@@ -34,57 +44,141 @@ tags:
   - Brand Management
   - Publishing
   - Community Management
+  - Marketing
+  - Social Media Management
 apis:
-  - aid: loomly:loomly-api
-    name: Loomly API
+  - aid: loomly:loomly-status-api
+    name: Loomly Status API
     description: >-
-      REST API for the Loomly brand success platform, providing programmatic
-      access to social media calendars, posts, approval workflows, publishing
-      scheduling, and analytics. Authenticated via OAuth 2.0 Bearer tokens.
+      Public, read-only, unauthenticated JSON API for the Loomly status page,
+      exposing overall system state, the four service components (Publishing,
+      Analytics, Interactions, Website) and paginated incident and maintenance
+      notices. The status page and its API are operated for Loomly by SorryApp
+      on the status.loomly.com subdomain; the endpoint shapes are SorryApp's
+      status-page API, and the data is Loomly's.
     image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.loomly.com
-    baseURL: https://api.loomly.com/v1
+    humanURL: https://status.loomly.com
+    baseURL: https://status.loomly.com/api/v1
     tags:
-      - Social Media
-      - Content Calendar
-      - Posts
-      - Scheduling
-      - Approval Workflows
-      - Analytics
+      - Status
+      - Incidents
+      - Uptime
+      - Monitoring
     properties:
       - type: Documentation
-        url: https://www.loomly.com/integrations
+        url: https://api.sorryapp.com/v1
+      - type: RateLimits
+        url: rate-limits/loomly-rate-limits.yml
+      - type: Conventions
+        url: conventions/loomly-conventions.yml
+  - aid: loomly:loomly-platform-api
+    name: Loomly Platform API (partner-gated)
+    description: >-
+      Loomly operates an OAuth 2.0 protected platform API that backs its Zapier
+      app — 12 triggers (new post, post state updated, post publish
+      successful/failed/required, new comment, new quick post, new custom post
+      idea, item added to library, invite sent, post assignment updated, post
+      edited) and 2 write actions (create custom post idea, create quick post).
+      No base URL, reference, or specification for this API is published
+      anywhere; the only publicly reachable part of it is the authorization
+      endpoint at https://app.loomly.com/oauth/authorize, which 302s to sign-in.
+      baseURL is deliberately omitted because Loomly does not publish one.
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+    humanURL: https://zapier.com/apps/loomly/integrations
+    tags:
+      - Posts
+      - Content Calendar
+      - Scheduling
+      - Approval Workflows
+      - Partner API
+    properties:
       - type: Authentication
-        url: https://www.loomly.com/features
+        url: authentication/loomly-authentication.yml
+      - type: Integrations
+        url: integrations/loomly-zapier.yml
 common:
-  - type: TrustCenter
-    url: security/loomly-trust-center.yml
-  - type: VulnerabilityDisclosure
-    url: security/loomly-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/loomly-domain-security.yml
   - type: Website
     url: https://www.loomly.com
   - type: Documentation
-    url: https://www.loomly.com/integrations
-  - type: GitHubOrg
-    url: https://github.com/loomly
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/loomly
+    url: https://loomly.zendesk.com/hc/en-us/
+  - type: GettingStarted
+    url: https://loomly.zendesk.com/hc/en-us/sections/38524587224347-Get-started
+  - type: Support
+    url: https://loomly.zendesk.com/hc/en-us/requests/new
   - type: Blog
     url: https://www.loomly.com/blog
-  - type: Pricing
-    url: https://www.loomly.com/pricing
-  - type: StatusPage
-    url: https://status.loomly.com
+  - type: BlogRSS
+    url: https://www.loomly.com/blog/rss.xml
+  - type: GitHubOrganization
+    url: https://github.com/Loomly
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/loomly
   - type: X
     url: https://x.com/LoomlySocial
+  - type: Pricing
+    url: https://www.loomly.com/pricing
+  - type: SignUp
+    url: https://app.loomly.com/signup
+  - type: TermsOfService
+    url: https://www.loomly.com/terms
+  - type: PrivacyPolicy
+    url: https://www.loomly.com/privacy
+  - type: StatusPage
+    url: https://status.loomly.com
+  - type: Lifecycle
+    url: lifecycle/loomly-lifecycle.yml
+  - type: ChangeLog
+    url: changelog/loomly-changelog.yml
+  - type: Authentication
+    url: authentication/loomly-authentication.yml
+  - type: Conventions
+    url: conventions/loomly-conventions.yml
+  - type: Integrations
+    url: integrations/loomly-zapier.yml
+  - type: Security
+    url: security/loomly-vulnerability-disclosure.yml
+  - type: VulnerabilityDisclosure
+    url: security/loomly-vulnerability-disclosure.yml
+  - type: TrustCenter
+    url: security/loomly-trust-center.yml
+  - type: DomainSecurity
+    url: security/loomly-domain-security.yml
+  - type: Compliance
+    url: conformance/loomly-conformance.yml
+  - type: Conformance
+    url: conformance/loomly-conformance.yml
   - type: Plans
     url: plans/loomly-plans-pricing.yml
   - type: RateLimits
     url: rate-limits/loomly-rate-limits.yml
   - type: FinOps
     url: finops/loomly-finops.yml
+  - type: LLMsTxt
+    url: llms/loomly-llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-13'
+  status: minimal
+  artifacts_added: 10
+  pass: local-v1
+x-coverage:
+  state: gated
+  reason: marketplace-only
+  detail: >-
+    Loomly runs no developer site and publishes no API reference or spec — its
+    entire programmable surface (12 triggers, 2 write actions) is listed only on
+    zapier.com, entered through an OAuth authorization endpoint at
+    app.loomly.com/oauth/authorize that 302s to sign-in, and the api.loomly.com
+    host a previous pass recorded does not resolve at all.
+  evidence:
+    - url: https://www.loomly.com/developers
+      status: 404
+    - url: https://app.loomly.com/oauth/authorize
+      status: 302
+    - url: https://zapier.com/apps/loomly/integrations
+      status: 200
+    - url: https://www.loomly.com/openapi.json
+      status: 404
+  checked: '2026-08-13'
