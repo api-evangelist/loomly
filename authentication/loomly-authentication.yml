@@ -1,0 +1,88 @@
+generated: '2026-08-13'
+method: probed
+source: >-
+  Live probes of app.loomly.com and status.loomly.com, plus the Loomly Zapier
+  listing and the Loomly help center Zapier articles.
+name: Loomly Authentication
+description: >-
+  Loomly publishes no API authentication documentation. This profile is assembled
+  from what can be probed anonymously and from what Loomly's own help-center
+  articles say about connecting Zapier. Nothing here is taken from a
+  specification, because Loomly publishes none.
+summary:
+  types:
+    - oauth2
+    - none
+  oauth2_flows:
+    - authorization_code
+  documented_by_provider: false
+  spec_derived: false
+surfaces:
+  - name: Loomly Platform API (partner-gated)
+    auth: oauth2
+    flow: authorization_code
+    authorization_endpoint: https://app.loomly.com/oauth/authorize
+    token_endpoint: null
+    scopes_published: false
+    evidence:
+      - url: https://app.loomly.com/oauth/authorize
+        http_status: 302
+        location: https://app.loomly.com/signin?redirect=%2Foauth%2Fauthorize
+        fetched: '2026-08-13'
+        note: >-
+          A distinct, routed OAuth authorization endpoint that redirects
+          unauthenticated callers to sign-in. Sibling paths under /oauth/ (for
+          example /oauth/token) return the application's generic 404 shell, so
+          /oauth/authorize is a real route rather than a catch-all.
+      - url: https://zapier.com/apps/loomly/integrations
+        http_status: 200
+        fetched: '2026-08-13'
+        note: >-
+          The Zapier app is the only publicly named consumer of this API.
+      - url: https://loomly.zendesk.com/hc/en-us/articles/38970621662619-How-to-Use-Zapier-to-Connect-Loomly-with-Other-Apps
+        http_status: 200
+        fetched: '2026-08-13'
+        note: >-
+          Loomly's own help article instructs users to "Sign in to Loomly" and
+          "click on Authorize" from Zapier — an authorization-code consent flow.
+    gaps:
+      - No token endpoint is published.
+      - No scope list, consent screen documentation, or token lifetime is published.
+      - No client registration path exists; clients are onboarded by Loomly/Zapier.
+      - No refresh-token, revocation, or rotation policy is published.
+  - name: Loomly Status API
+    auth: none
+    anonymous: true
+    evidence:
+      - url: https://status.loomly.com/api/v1/status
+        http_status: 200
+        content_type: application/json; charset=utf-8
+        fetched: '2026-08-13'
+        note: >-
+          Returns 200 JSON with no Authorization header. Read-only status-page
+          data only. The write side of the same vendor API (api.sorryapp.com)
+          requires a bearer API token, but that token belongs to SorryApp's
+          product, not to a Loomly API program.
+discovery:
+  well_known_probed:
+    - url: https://www.loomly.com/.well-known/openid-configuration
+      http_status: 404
+    - url: https://www.loomly.com/.well-known/oauth-authorization-server
+      http_status: 404
+    - url: https://app.loomly.com/.well-known/openid-configuration
+      http_status: 404
+    - url: https://app.loomly.com/.well-known/oauth-authorization-server
+      http_status: 404
+    - url: https://app.loomly.com/.well-known/oauth-protected-resource
+      http_status: 404
+  note: >-
+    No OAuth 2.0 Authorization Server Metadata (RFC 8414) and no OpenID Connect
+    discovery document is served on any Loomly host, so an agent cannot discover
+    the token endpoint or scopes without a partner conversation.
+notes:
+  - >-
+    A previous automated pass recorded "Authenticated via OAuth 2.0 Bearer
+    tokens" against a base URL of https://api.loomly.com/v1. That host does not
+    exist (NXDOMAIN on 1.1.1.1, 8.8.8.8 and 9.9.9.9 as of 2026-08-13) and no
+    Loomly page names it. That claim has been removed; this file records only
+    what was probed.

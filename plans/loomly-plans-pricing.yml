@@ -1,7 +1,49 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.loomly.com/pricing
+plan_count: 4
 name: Loomly Plans and Pricing
 description: Pricing plans for Loomly, the brand success platform for social media content management, scheduling, approval workflows, and analytics.
 url: https://www.loomly.com/pricing
 plans:
+  - name: Free
+    description: >-
+      Free plan for a single user managing up to 3 social accounts, capped at 5
+      posts per month. Not surfaced on the public pricing comparison table;
+      documented in the help center and offered during sign-up.
+    price_monthly: 0
+    price_annual_monthly: 0
+    price_annual_total: 0
+    currency: USD
+    billing_options:
+      - free
+    limits:
+      social_accounts: 3
+      users: 1
+      posts_per_month: 5
+      calendars: unlimited
+    features:
+      - Direct publishing
+      - Post scheduling
+      - Hashtag Manager
+      - Ideas Board
+      - Post Preview
+      - Google Drive upload
+      - Canva integration
+      - Giphy integration
+      - Loomly Studio
+      - Slideshow creation
+      - Post Inspiration
+      - Post Analytics Dashboard
+      - Export Reports
+      - List, Calendar and Post views
+      - iOS and Android apps
+      - Zapier
+      - Two-factor authentication
+    source: https://loomly.zendesk.com/hc/en-us/articles/39051127130779-New-Free-plan
+    note: >-
+      Loomly notes availability may vary by account: "Experience might vary and
+      the Free Plan might not be available for all users."
   - name: Starter
     description: For small teams managing social media across a limited number of accounts.
     price_monthly: 65
@@ -74,6 +116,17 @@ discounts:
     description: Nonprofit organizations receive a 50% lifetime discount with proper documentation.
     percent: 50
 notes:
-  - A hidden free tier is accessible within the app under Account Settings > Billing.
+  - The Free plan is documented in the help center and offered at sign-up; existing accounts can select it under Account Settings > Billing.
   - Adding a 4th team member or 13th social account on Starter triggers a mandatory upgrade to Beyond.
   - Loomly was acquired by Bending Spoons on January 2, 2025.
+  - >-
+    Pricing verified live on https://www.loomly.com/pricing on 2026-08-13:
+    Starter $65/mo monthly or $49/mo billed annually; Beyond $332/mo monthly or
+    $249/mo billed annually; Enterprise contact-sales; "Save 25%" on annual.
+evidence:
+  - url: https://www.loomly.com/pricing
+    http_status: 200
+    fetched: '2026-08-13'
+  - url: https://loomly.zendesk.com/hc/en-us/articles/39051127130779-New-Free-plan
+    http_status: 200
+    fetched: '2026-08-13'

@@ -1,16 +1,80 @@
-generated: '2026-07-11'
+generated: '2026-08-13'
 method: searched
-probe: true
 source: https://www.loomly.com/security
 url: https://www.loomly.com/security
-certifications:
-- SOC 2
-- ISO 27001
-- PCI DSS
+name: Loomly Security Page
+description: >-
+  Loomly publishes a public security page rather than a hosted trust center. It
+  describes infrastructure, encryption, testing and vendor posture, links a
+  vulnerability reporting policy and a DPA, and names its subprocessors. It does
+  NOT publish a customer-facing document portal, a SOC 2 report request flow, or
+  an attestation download.
+trust_center: false
+certifications: []
+inherited_certifications:
+  # IMPORTANT: these are the certifications of Loomly's INFRASTRUCTURE PROVIDER
+  # (AWS), quoted on Loomly's security page. They are NOT Loomly certifications
+  # and must not be credited to Loomly. A prior automated pass keyword-matched
+  # this sentence and recorded SOC 2 / ISO 27001 / PCI DSS as Loomly's own; that
+  # was wrong and is corrected here.
+  - name: ISO 27001
+    holder: AWS (Loomly's data center provider)
+  - name: PCI DSS Service Provider Level 1
+    holder: AWS (Loomly's data center provider)
+  - name: SOC 1
+    holder: AWS (Loomly's data center provider)
+  - name: SOC 2
+    holder: AWS (Loomly's data center provider)
+  - name: SOC 3
+    holder: AWS (Loomly's data center provider)
+inherited_certifications_quote: >-
+  "Our provider data centers are certified as ISO 27001, PCI DSS Service
+  Provider Level 1, SOC 1, SOC 2 and SOC 3 compliant."
+first_party_claims:
+  - claim: PCI-DSS compliance as a card-not-present merchant
+    detail: >-
+      Loomly states it is PCI-DSS compliant as a card-not-present merchant;
+      card data is handled by Stripe and does not touch Loomly systems.
+    scope: payments
+  - claim: Annual third-party penetration testing
+    detail: >-
+      "Third-party penetration tests are conducted against the application and
+      supporting infrastructure at least annually."
+  - claim: Encryption in transit and at rest
+    detail: TLS/HTTPS enforced in transit; AES encryption at rest managed by AWS.
+  - claim: Two-factor authentication
+    detail: >-
+      2FA is available on all plans (including the free plan) and can be
+      enforced per calendar on the Beyond tier.
+subprocessors:
+  published: true
+  source: https://www.loomly.com/security
+  named:
+    - Amazon Web Services
+    - Google
+    - HubSpot
+    - Intercom
+    - Bending Spoons
+related_documents:
+  - type: DataProcessingAgreement
+    url: https://www.loomly.com/dpa
+  - type: PrivacyPolicy
+    url: https://www.loomly.com/privacy
+  - type: TermsOfService
+    url: https://www.loomly.com/terms
+  - type: VulnerabilityDisclosure
+    url: https://www.loomly.com/vulnerability_reporting_policy
 evidence:
-- source: https://www.loomly.com/security
-  keywords:
-  - soc 2
-  - iso 27001
-  - pci dss
-  - pci-dss
+  - url: https://www.loomly.com/security
+    http_status: 200
+    fetched: '2026-08-13'
+  - url: https://www.loomly.com/dpa
+    http_status: 200
+    fetched: '2026-08-13'
+notes:
+  - >-
+    No SOC 2 report, ISO certificate, or attestation of Loomly's own is offered
+    for download or on request from any public page.
+  - >-
+    No hosted trust center (Vanta/Drata/SafeBase/Conveyor) was found on any
+    loomly.com host.

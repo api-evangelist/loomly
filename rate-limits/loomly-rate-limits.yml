@@ -1,53 +1,79 @@
+generated: '2026-08-13'
+method: probed
+source: >-
+  Live responses from https://status.loomly.com/api/v1/* plus SorryApp's status
+  API reference at https://api.sorryapp.com/v1
 name: Loomly Rate Limits
-description: Rate limiting policies for the Loomly API, including the public status API and the core REST API for social media management.
-url: https://status.loomly.com/api
+description: >-
+  Loomly publishes no rate limits, because it publishes no API. The only limits
+  recorded here belong to the vendor status-page API served on status.loomly.com,
+  and to the plan-level quotas Loomly enforces on its product. No rate-limit
+  response headers were observed on any Loomly surface.
+url: https://status.loomly.com/api/v1
+limit_count: 1
 limits:
   - api: Loomly Status API
-    description: Public API for querying Loomly system status, component health, and incident notices.
-    base_url: https://status.loomly.com/api/v1
-    rate_limit:
-      requests_per_second: 10
-      policy: fair use
-    pagination:
-      max_records_per_page: 25
-      pagination_type: cursor
-      metadata: includes total count and next page URL
-    endpoints:
-      - path: /status
-        method: GET
-        description: Returns overall system state without component details.
-      - path: /components
-        method: GET
-        description: Lists paginated components with filtering for parent and child relationships.
-      - path: /notices
-        method: GET
-        description: Retrieves paginated incident and maintenance notices with filter capabilities.
-      - path: /notices/{id}
-        method: GET
-        description: Fetches detailed notice information including impacted components and update history.
-  - api: Loomly Core REST API
-    description: REST API for managing calendars, posts, approval workflows, and publishing.
-    base_url: https://api.loomly.com/v1
-    authentication: OAuth 2.0 Bearer Token
-    rate_limit:
-      notes: Specific rate limits for the core API are not publicly documented. Contact Loomly support for plan-specific rate limit details.
-    endpoints:
-      - path: /calendars
-        method: GET
-        description: List calendars accessible to the authenticated user.
-      - path: /posts
-        method: GET
-        description: List posts within accessible calendars.
-      - path: /posts
-        method: POST
-        description: Create a new post with content and scheduling parameters.
-      - path: /posts/{id}
-        method: PATCH
-        description: Update an existing post.
-      - path: /posts/{id}
-        method: DELETE
-        description: Delete a post.
-notes:
-  - The Status API (status.loomly.com/api) is publicly documented with a stated 10 req/s fair-use limit.
-  - Core API rate limits are not publicly disclosed; they may vary by plan.
-  - Webhooks are supported for real-time event notifications.
+    surface: https://status.loomly.com/api/v1
+    scope: per-token (documented by the vendor for authenticated use)
+    window: 1 second
+    limit: 10
+    burst: null
+    status_on_exhaustion: 429
+    response_headers: []
+    method: searched
+    source: https://api.sorryapp.com/v1
+    note: >-
+      SorryApp documents "10 requests per second per API token" with a 429 on
+      exhaustion for api.sorryapp.com. The status.loomly.com/api/v1 endpoints are
+      the anonymous read-only projection of that product; the documented limit is
+      the nearest published number, and no per-IP limit for the anonymous surface
+      is published anywhere.
+observed_headers:
+  probed_url: https://status.loomly.com/api/v1/status
+  http_status: 200
+  fetched: '2026-08-13'
+  rate_limit_headers_present: false
+  headers_seen:
+    - etag
+    - 'cache-control: max-age=0, public, must-revalidate, s-maxage=600'
+    - x-request-id
+    - x-runtime
+    - 'vary: Accept, Origin, Accept-Encoding'
+    - via (Fastly/Varnish + Heroku router)
+  note: >-
+    No X-RateLimit-*, RateLimit-* or Retry-After header is returned, so an agent
+    has no runtime rate-limit signal on this surface. The 600s edge cache means
+    most repeat reads never reach origin.
+platform_api:
+  api: Loomly Platform API (partner-gated)
+  limits_published: false
+  note: >-
+    No rate limits are published for the OAuth-protected platform API behind the
+    Zapier app. Zapier's own plan task limits apply to any Zap, but those are
+    Zapier's limits, not Loomly's.
+product_quotas:
+  note: >-
+    Loomly's real published throughput constraints are commercial, not
+    per-request. They are plan quotas, recorded in plans/loomly-plans-pricing.yml.
+  examples:
+    - plan: Free
+      posts_per_month: 5
+      social_accounts: 3
+      users: 1
+    - plan: Starter
+      social_accounts: 12
+      users: 3
+    - plan: Beyond
+      social_accounts: 60
+      users: unlimited
+corrections:
+  - >-
+    A previous pass recorded a "Loomly Core REST API" at https://api.loomly.com/v1
+    with /calendars and /posts endpoints and OAuth 2.0 bearer auth. That host does
+    not resolve (NXDOMAIN on 1.1.1.1, 8.8.8.8 and 9.9.9.9 on 2026-08-13) and no
+    Loomly page documents those endpoints. The entry has been removed.
+  - >-
+    The same pass asserted "Webhooks are supported for real-time event
+    notifications." No first-party webhook surface is documented anywhere on
+    loomly.com or in the help center; the event-like capability is Zapier
+    triggers. That claim has been removed.

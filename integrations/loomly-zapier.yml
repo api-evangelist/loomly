@@ -1,0 +1,123 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://zapier.com/apps/loomly/integrations and the Zapier section of Loomly's
+  help center (https://loomly.zendesk.com/hc/en-us/sections/38857422012443-Zapier)
+name: Loomly Zapier Integration Surface
+description: >-
+  Zapier is the only place Loomly's platform capabilities are published as named,
+  callable operations. Loomly ships no first-party API reference, so this listing
+  is the de-facto public contract for what an integrator can read from and write
+  to. Triggers are event subscriptions (REST-hook style) and actions are writes.
+  Everything below is transcribed verbatim from the Zapier listing; nothing is
+  inferred.
+surface:
+  platform: Zapier
+  listing: https://zapier.com/apps/loomly/integrations
+  auth: OAuth 2.0 authorization code via https://app.loomly.com/oauth/authorize
+  first_party: unknown
+  note: >-
+    The Zapier listing does not state whether the app is built by Loomly or by
+    Zapier. Loomly's own help center documents it as "our Zapier integration",
+    which is the strongest available signal, but is not a build attribution.
+triggers:
+  - name: New Custom Post Idea Created
+    kind: event
+    entity: post_idea
+  - name: New Invite Sent to Collaborator
+    kind: event
+    entity: invite
+  - name: Item Added to Library
+    kind: event
+    entity: library_item
+  - name: New Post Created
+    kind: event
+    entity: post
+  - name: New Comment Left on Post
+    kind: event
+    entity: comment
+  - name: New Quick Post Created
+    kind: event
+    entity: quick_post
+  - name: Post Assignment Updated
+    kind: event
+    entity: post
+  - name: Post State Updated
+    kind: event
+    entity: post
+  - name: Post Edited
+    kind: event
+    entity: post
+  - name: Post Publish Failed
+    kind: event
+    entity: post
+  - name: Post Publish Required
+    kind: event
+    entity: post
+    note: >-
+      Fires for channels Loomly cannot auto-publish to (Custom Channel, Tumblr,
+      WordPress and similar), so a Zap can complete the publish elsewhere.
+  - name: Post Publish Successful
+    kind: event
+    entity: post
+actions:
+  - name: Create Custom Post Idea
+    kind: write
+    entity: post_idea
+  - name: Create Quick Post
+    kind: write
+    entity: quick_post
+    fields_documented_by_loomly:
+      - calendar
+      - date
+      - subject
+      - copy
+      - per-channel booleans (one per social platform)
+    source: >-
+      https://loomly.zendesk.com/hc/en-us/articles/38970624539419-How-do-I-create-Quick-Posts-with-Zapier-and-Pocket
+coverage:
+  triggers: 12
+  actions: 2
+  searches: 0
+scoping:
+  per_calendar: true
+  note: >-
+    Loomly's help center states one Zap is required per calendar / destination
+    account pair, so the trigger scope is a single calendar.
+entities_implied:
+  - calendar
+  - post
+  - quick_post
+  - post_idea
+  - comment
+  - library_item
+  - invite
+  - social_account
+  - custom_channel
+partner_apps_documented_by_loomly:
+  content_curation: [Pocket, Feedly]
+  digital_asset_management: [Dropbox]
+  social_media: [Tumblr, Shopify, Discord, Xing Events, Reddit]
+  blog_publishing: [WordPress, Medium]
+  email_marketing: [Mailchimp]
+  project_management: [Google Calendar, Google Sheets, Trello, Asana, Airtable, Basecamp 3, ClickUp, monday.com, Zendesk]
+  crm: [Salesforce, Zoho CRM]
+native_integrations:
+  social_channels: [Instagram, LinkedIn, Facebook, TikTok, YouTube, Threads, Google Business Profile, Pinterest, Snapchat, Bluesky]
+  workflow: [Zapier, Microsoft Teams, Slack]
+  content: [Canva, Giphy, Google Drive, Unsplash]
+  source: https://www.loomly.com/integrations
+gaps:
+  - No Zapier "search" (read/lookup) operations are exposed.
+  - >-
+    No first-party webhook registration exists — these events are only reachable
+    by building a Zap, so they are not an independently addressable event surface
+    and no AsyncAPI or Webhooks pointer is emitted for them.
+  - No input/output schemas are published for any trigger or action.
+evidence:
+  - url: https://zapier.com/apps/loomly/integrations
+    http_status: 200
+    fetched: '2026-08-13'
+  - url: https://www.loomly.com/integrations
+    http_status: 200
+    fetched: '2026-08-13'

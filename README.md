@@ -42,33 +42,49 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Loomly is a brand success platform that empowers marketing teams to grow successful brands online through collaboration, publishing, and analytics features. It provides a REST API for managing social media content calendars, post ideas, approval workflows, publishing, and audience engagement analytics across 10+ social channels.
+Loomly is a social media management and brand success platform that helps marketing teams plan, create, approve, schedule and publish content across Facebook, Instagram, LinkedIn, TikTok, YouTube, Pinterest, Snapchat, Threads, Bluesky and Google Business Profile, with collaboration and approval workflows, a content library, analytics and a community-management inbox. Loomly was acquired by Bending Spoons on 2 January 2025.
 
 ## API
 
-The Loomly API is a REST API authenticated via OAuth 2.0 Bearer tokens. It provides endpoints for managing calendars, creating and scheduling posts, handling approval workflows, and retrieving analytics data. The base URL is `https://api.loomly.com/v1`.
+**Loomly publishes no public developer API.** There is no developer portal, no API reference, and no machine-readable specification of any kind — no OpenAPI, AsyncAPI, GraphQL SDL, JSON Schema or Postman collection. `https://www.loomly.com/developers` and `/api` both return 404, and every well-known and spec path was probed on `www.loomly.com`, `loomly.com`, `app.loomly.com` and `status.loomly.com` with no hits (see [well-known/loomly-well-known.yml](well-known/loomly-well-known.yml)).
+
+Two surfaces exist:
+
+- **Loomly Platform API (partner-gated).** An OAuth 2.0 protected API backs the Loomly Zapier app — 12 triggers and 2 write actions, catalogued in [integrations/loomly-zapier.yml](integrations/loomly-zapier.yml). The only publicly reachable part of it is the authorization endpoint at `https://app.loomly.com/oauth/authorize`, which 302s to sign-in. No base URL, scopes, token endpoint or contract is published.
+- **Loomly Status API.** A public, read-only, unauthenticated JSON API at `https://status.loomly.com/api/v1` covering system state, four service components and incident notices. It is operated for Loomly by SorryApp.
+
+> **Correction (2026-08-13).** An earlier automated pass recorded a "Loomly Core REST API" at `https://api.loomly.com/v1` with `/calendars` and `/posts` endpoints, OAuth 2.0 bearer tokens and webhook support. That host does not resolve — NXDOMAIN on 1.1.1.1, 8.8.8.8 and 9.9.9.9 — and no Loomly page documents those endpoints. Those claims have been removed from every artifact in this repo.
 
 ## Plans
 
-- **Starter** - $49/month (annual) — 12 social accounts, 3 users, unlimited calendars
-- **Beyond** - $249/month (annual) — 60 social accounts, unlimited users, custom workflows
-- **Enterprise** - Custom pricing — 61+ social accounts, priority support
+- **Free** — $0 — 1 user, 3 social accounts, 5 posts/month
+- **Starter** — $49/month billed annually ($65 monthly) — 12 social accounts, 3 users, unlimited calendars
+- **Beyond** — $249/month billed annually ($332 monthly) — 60 social accounts, unlimited users, custom workflows
+- **Enterprise** — Custom pricing — 61+ social accounts, priority support
 
-See [plans/loomly-plans-pricing.yml](plans/loomly-plans-pricing.yml) for full pricing details.
+25% saving on annual billing; 50% lifetime nonprofit discount. See [plans/loomly-plans-pricing.yml](plans/loomly-plans-pricing.yml).
 
 ## Rate Limits
 
-The public Status API enforces a 10 requests-per-second fair-use limit. Core API rate limits are not publicly disclosed. See [rate-limits/loomly-rate-limits.yml](rate-limits/loomly-rate-limits.yml) for details.
+Loomly publishes no API rate limits. The vendor status API documents 10 requests per second per token with a 429 on exhaustion, and no rate-limit response headers are returned on the anonymous status surface. Loomly's real published throughput constraints are commercial plan quotas. See [rate-limits/loomly-rate-limits.yml](rate-limits/loomly-rate-limits.yml).
+
+## Security
+
+Loomly publishes a [vulnerability reporting policy](https://www.loomly.com/vulnerability_reporting_policy) (email `security@loomly.com` for a disclosure form; no bug bounty, no published safe harbor) and a [security page](https://www.loomly.com/security) covering encryption, annual third-party penetration testing, 2FA and named subprocessors. Note that the ISO 27001, PCI DSS Level 1 and SOC 1/2/3 certifications quoted on that page belong to **AWS**, Loomly's data-center provider — not to Loomly. Loomly's own compliance claim is PCI-DSS as a card-not-present merchant via Stripe. See [security/](security/) and [conformance/loomly-conformance.yml](conformance/loomly-conformance.yml).
 
 ## FinOps
 
-Key cost optimization: stay under 12 social accounts and 3 users on Starter to avoid a 408% cost jump to Beyond. Annual billing saves 25%. Nonprofits qualify for a 50% lifetime discount. See [finops/loomly-finops.yml](finops/loomly-finops.yml).
+Key cost optimization: stay under 12 social accounts and 3 users on Starter to avoid a 408% cost jump to Beyond. Annual billing saves 25%. Nonprofits qualify for a 50% lifetime discount. There is no metered API cost to manage. See [finops/loomly-finops.yml](finops/loomly-finops.yml).
 
 ## Links
 
 - Website: https://www.loomly.com
+- Help Center: https://loomly.zendesk.com/hc/en-us/
+- Integrations: https://www.loomly.com/integrations
+- Zapier app: https://zapier.com/apps/loomly/integrations
 - Pricing: https://www.loomly.com/pricing
 - Status: https://status.loomly.com
 - Blog: https://www.loomly.com/blog
+- GitHub: https://github.com/Loomly
 - LinkedIn: https://www.linkedin.com/company/loomly
 - X: https://x.com/LoomlySocial

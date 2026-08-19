@@ -1,0 +1,90 @@
+generated: '2026-08-13'
+method: probed
+source: >-
+  https://status.loomly.com and its JSON API, plus a search of loomly.com for
+  versioning, deprecation, SLA and roadmap pages.
+name: Loomly Lifecycle
+description: >-
+  Operational lifecycle posture for Loomly. Loomly runs a real, machine-readable
+  status page and a dated product-update surface in its help center, but
+  publishes no API versioning policy, no deprecation policy, no SLA and no
+  roadmap — consistent with having no public API program.
+status_page:
+  present: true
+  url: https://status.loomly.com
+  vendor: SorryApp
+  machine_readable: true
+  api_base: https://status.loomly.com/api/v1
+  authentication: none
+  components:
+    - name: Publishing
+      state: operational
+    - name: Analytics
+      state: operational
+    - name: Interactions
+      state: operational
+    - name: Website
+      state: operational
+  notices_available: 10
+  state_at_probe: operational
+  evidence:
+    - url: https://status.loomly.com/api/v1/status
+      http_status: 200
+      fetched: '2026-08-13'
+    - url: https://status.loomly.com/api/v1/components
+      http_status: 200
+      fetched: '2026-08-13'
+versioning:
+  policy_published: false
+  scheme: path
+  current_version: v1
+  note: >-
+    The only versioned surface is the status API path segment /api/v1. No
+    versioning policy, no version negotiation header, and no version history is
+    published for any Loomly surface.
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  note: >-
+    No deprecation or sunset policy exists. The nearest published precedent is
+    the Buffer integration sunset announced on the Loomly blog
+    (https://www.loomly.com/blog/buffer-integration-sunset), which is a product
+    announcement rather than a policy.
+sla:
+  published: false
+  uptime_target: null
+  credits: null
+  note: >-
+    No uptime commitment or service credit schedule is published on the pricing,
+    terms or status pages.
+roadmap:
+  published: false
+  probed:
+    - url: https://www.loomly.com/roadmap
+      http_status: 404
+support:
+  help_center: https://loomly.zendesk.com/hc/en-us/
+  contact: https://loomly.zendesk.com/hc/en-us/requests/new
+  priority_support_tiers: [Beyond, Enterprise]
+ownership:
+  acquired_by: Bending Spoons
+  acquired_on: '2025-01-02'
+  note: >-
+    Ownership change is lifecycle-relevant: pricing, plan structure and feature
+    availability have moved since acquisition (a new Free plan appeared in
+    July 2025 and a new interface shipped in May 2026).
+probed_absences:
+  - url: https://www.loomly.com/changelog
+    http_status: 404
+  - url: https://www.loomly.com/release-notes
+    http_status: 404
+  - url: https://www.loomly.com/whats-new
+    http_status: 404
+  - url: https://www.loomly.com/roadmap
+    http_status: 404
+  - url: https://www.loomly.com/api
+    http_status: 404
+  - url: https://www.loomly.com/developers
+    http_status: 404

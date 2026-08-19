@@ -1,3 +1,6 @@
+generated: '2026-08-13'
+method: derived
+source: plans/loomly-plans-pricing.yml + https://www.loomly.com/pricing
 name: Loomly FinOps
 description: Financial operations and cost management guidance for teams using Loomly's brand success platform.
 url: https://www.loomly.com/pricing
@@ -33,15 +36,17 @@ plans:
     cost_drivers:
       - Negotiated based on social account count and organizational scale.
 savings_opportunities:
+  - description: >-
+      A Free plan (1 user, 3 social accounts, 5 posts per month) is available and
+      is the correct starting point for evaluation rather than a paid trial.
+    action: Select the Free plan at sign-up or under Account Settings > Billing.
+    cost: 0
   - description: Annual billing provides 25% savings versus monthly billing on all plans.
     action: Switch to annual commitment at the start of a billing period.
     savings_percent: 25
   - description: Nonprofit organizations qualify for a 50% lifetime discount.
     action: Submit documentation to Loomly support to apply the nonprofit discount.
     savings_percent: 50
-  - description: A hidden free tier with limited features is available within the app.
-    action: Navigate to Account Settings > Billing within the Loomly app and select the free plan.
-    cost: 0
 cost_optimization_notes:
   - Audit social account connections regularly to stay under the 12-account Starter limit and avoid forced upgrade.
   - Keep user count at 3 or fewer on Starter to prevent mandatory tier escalation.
@@ -49,3 +54,11 @@ cost_optimization_notes:
   - Enterprise pricing is negotiated and may offer favorable per-account rates at scale.
 vendor_context:
   - Loomly was acquired by Bending Spoons on January 2, 2025. Bending Spoons has a documented track record of raising prices and removing features post-acquisition; monitor pricing announcements closely.
+api_cost_notes:
+  - >-
+    There is no metered API pricing to optimize: Loomly publishes no public API
+    and no per-request billing. Integration cost lands on Zapier task consumption
+    instead, which is billed by Zapier and not by Loomly.
+  - >-
+    The binding constraint on any automation is the plan's social-account and
+    user count, and on the Free plan the 5-posts-per-month cap.

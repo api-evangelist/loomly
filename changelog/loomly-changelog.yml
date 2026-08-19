@@ -1,0 +1,103 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://loomly.zendesk.com/hc/en-us/sections/38525176400155-New-features
+  (read via the public Zendesk Help Center API,
+  https://loomly.zendesk.com/api/v2/help_center/en-us/articles.json)
+name: Loomly Product Updates
+description: >-
+  Loomly publishes no API changelog and no release notes on its own domain
+  (/changelog, /release-notes, /whats-new and /product-updates all return 404).
+  The nearest thing is a "New features" section in its Zendesk help center, where
+  each new capability gets a dated article. That is a product changelog, not an
+  API changelog — no entry describes an interface change, a version, or a
+  breaking change.
+scheme:
+  versioned: false
+  dated: true
+  breaking_changes_flagged: false
+  rss: false
+  api_scope: false
+current_version: null
+surface:
+  url: https://loomly.zendesk.com/hc/en-us/sections/38525176400155-New-features
+  machine_readable: true
+  machine_readable_via: https://loomly.zendesk.com/api/v2/help_center/en-us/articles.json
+  note: >-
+    The help-center HTML answers 403 to non-browser clients, but the Zendesk Help
+    Center API serves all 144 articles anonymously, which is how these entries
+    were read.
+entries:
+  - date: '2026-05-14'
+    title: Social Listening
+    kind: addition
+    breaking: false
+    url: https://loomly.zendesk.com/hc/en-us/articles/50360340121371-Social-Listening
+  - date: '2026-05-14'
+    title: AI Assistant
+    kind: addition
+    breaking: false
+    url: https://loomly.zendesk.com/hc/en-us/articles/50360331671323-AI-Assistant
+  - date: '2026-05-14'
+    title: Reply with AI
+    kind: addition
+    breaking: false
+    url: https://loomly.zendesk.com/hc/en-us/articles/50360315177243-Reply-with-AI
+  - date: '2026-05-14'
+    title: Navigating the New Interface
+    kind: change
+    breaking: false
+    url: https://loomly.zendesk.com/hc/en-us/articles/50360282871835-Navigating-the-New-Interface
+    note: New Loomly application interface.
+  - date: '2026-05-14'
+    title: AI Knowledge in Calendar Settings
+    kind: addition
+    breaking: false
+    url: https://loomly.zendesk.com/hc/en-us/articles/50360228749467-AI-Knowledge-in-Calendar-Settings
+  - date: '2025-08-12'
+    title: Best time to post
+    kind: addition
+    breaking: false
+    url: https://loomly.zendesk.com/hc/en-us/articles/39925706408603-Best-time-to-post
+  - date: '2025-07-17'
+    title: Bulk uploading
+    kind: addition
+    breaking: false
+    url: https://loomly.zendesk.com/hc/en-us/articles/39051166025499-Bulk-uploading
+  - date: '2025-07-17'
+    title: Recurring Post feature
+    kind: addition
+    breaking: false
+    url: https://loomly.zendesk.com/hc/en-us/articles/39051164496411-Recurring-Post-feature
+  - date: '2025-07-17'
+    title: Idea board
+    kind: addition
+    breaking: false
+    url: https://loomly.zendesk.com/hc/en-us/articles/39051160243867-Idea-board
+  - date: '2025-07-17'
+    title: New Free plan
+    kind: commercial
+    breaking: false
+    url: https://loomly.zendesk.com/hc/en-us/articles/39051127130779-New-Free-plan
+    note: 1 user, 3 social accounts, 5 posts per month.
+  - date: '2025-07-02'
+    title: AI Captions
+    kind: addition
+    breaking: false
+    url: https://loomly.zendesk.com/hc/en-us/articles/38554867579163-AI-Captions
+entry_count: 11
+window: 2025-07-02 through 2026-05-14
+gaps:
+  - No API changelog of any kind.
+  - No RSS/Atom feed for product updates.
+  - No breaking-change or migration notices.
+  - >-
+    Incident history is separate and lives in the status API
+    (https://status.loomly.com/api/v1/notices, 10 notices at probe time).
+evidence:
+  - url: https://loomly.zendesk.com/api/v2/help_center/en-us/articles.json
+    http_status: 200
+    fetched: '2026-08-13'
+  - url: https://www.loomly.com/changelog
+    http_status: 404
+    fetched: '2026-08-13'

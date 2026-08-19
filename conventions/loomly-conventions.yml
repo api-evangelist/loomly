@@ -1,0 +1,89 @@
+generated: '2026-08-13'
+method: probed
+source: >-
+  Live responses from https://status.loomly.com/api/v1/* and probes of
+  app.loomly.com. Loomly publishes no API conventions documentation.
+name: Loomly API Conventions
+description: >-
+  Cross-cutting runtime semantics observed on the one Loomly API surface an agent
+  can actually call today — the public status API. These conventions belong to
+  SorryApp's status-page API as deployed on status.loomly.com; they are NOT a
+  statement about Loomly's partner-gated platform API, for which no conventions
+  are published at all.
+scope:
+  applies_to:
+    - Loomly Status API (https://status.loomly.com/api/v1)
+  does_not_apply_to:
+    - Loomly Platform API (partner-gated; nothing published)
+authentication:
+  style: none
+  detail: Status endpoints answer 200 with no Authorization header.
+  cross_reference: authentication/loomly-authentication.yml
+media_types:
+  request: n/a
+  response: application/json; charset=utf-8
+idempotency:
+  supported: false
+  header: null
+  retention: null
+  note: >-
+    No Idempotency-Key support, no retry-safety guidance, and no write endpoints
+    on the public surface. No Idempotency pointer is emitted for this provider.
+pagination:
+  style: page-and-meta
+  observed_fields:
+    - meta.count
+    - meta.total_count
+    - links.next
+    - links.self
+  page_size_default: 25
+  filtering:
+    style: bracketed filter parameters
+    example: /api/v1/components?filter%5Bparent_id_eq%5D=39340
+    note: Ransack-style filter[<field>_<predicate>] parameters, observed on links returned by the API.
+  evidence:
+    - url: https://status.loomly.com/api/v1/components
+      http_status: 200
+      fetched: '2026-08-13'
+field_expansion:
+  supported: false
+metadata:
+  supported: false
+request_tracing:
+  header: x-request-id
+  observed_value_shape: uuid
+  note: >-
+    Heroku's router emits x-request-id on every response. Loomly does not
+    document it and it is not part of a published support workflow.
+caching:
+  etag: true
+  cache_control: 'max-age=0, public, must-revalidate, s-maxage=600'
+  cdn: Fastly (Varnish), origin on Heroku
+  vary: Accept, Origin, Accept-Encoding
+  note: >-
+    Conditional requests with If-None-Match are viable; the edge caches
+    collections for 600s.
+versioning:
+  style: path
+  current: v1
+  cross_reference: lifecycle/loomly-lifecycle.yml
+error_envelope:
+  format: unknown
+  rfc9457: false
+  note: >-
+    No error reference is published and no error response was deliberately
+    provoked during this pass, so the error envelope shape is unrecorded rather
+    than assumed.
+rate_limit_signaling:
+  response_headers: []
+  note: >-
+    No X-RateLimit-*, RateLimit-* or Retry-After header was present on a 200
+    response from https://status.loomly.com/api/v1/status. The 10 requests per
+    second limit SorryApp documents is stated for authenticated api.sorryapp.com
+    tokens, not for this anonymous status-page surface.
+  cross_reference: rate-limits/loomly-rate-limits.yml
+transport_security:
+  https_only: true
+  tls: TLSv1.3
+  hsts: present with max-age=0 (effectively disabled)
+  cross_reference: security/loomly-domain-security.yml

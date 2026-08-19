@@ -1,0 +1,59 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  Searches of loomly.com, app.loomly.com, the Loomly help center, the Loomly
+  GitHub organization and the npm/PyPI registries for a hosted or installable MCP
+  server, 2026-08-13
+name: Loomly MCP
+description: >-
+  A recorded absence. Loomly ships no Model Context Protocol server — no hosted
+  endpoint, no stdio package, and no MCP mention anywhere in its documentation.
+  No MCPServer pointer is emitted in apis.yml, and no candidate tool list is
+  derived, because Loomly publishes no OpenAPI to derive one from.
+status: none
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+tools: []
+searched:
+  - target: loomly.com and app.loomly.com
+    result: no MCP reference
+  - target: Loomly help center (144 public articles via the Zendesk Help Center API)
+    result: no MCP reference
+  - target: https://github.com/Loomly
+    result: 7 repositories, all forks of third-party tooling; no MCP server
+  - target: npm registry search "loomly"
+    result: 0 packages
+  - target: PyPI "loomly"
+    result: 404
+probes:
+  - url: https://www.loomly.com/.well-known/ai-plugin.json
+    http_status: 404
+  - url: https://app.loomly.com/.well-known/ai-plugin.json
+    http_status: 404
+  - url: https://www.loomly.com/llms.txt
+    http_status: 404
+derivation:
+  possible: false
+  reason: >-
+    Deriving a candidate tool list requires an OpenAPI document. Loomly publishes
+    none, and no MCP endpoint URL will be guessed — a guessed path that happened
+    to answer 200 would read as a verified agent surface.
+adjacent_surfaces:
+  - name: Loomly Zapier app
+    kind: workflow platform integration
+    note: >-
+      The closest thing to a callable tool surface is the 12 triggers and 2
+      actions Loomly exposes through Zapier. That is an integration inside a host
+      platform, reachable only after a human builds a Zap, and it is not an MCP
+      server. Recorded in integrations/loomly-zapier.yml.
+  - name: Loomly Status API
+    kind: read-only REST
+    endpoint: https://status.loomly.com/api/v1
+    note: >-
+      Anonymous and callable, but it is a vendor status-page API and exposes no
+      Loomly business capability.

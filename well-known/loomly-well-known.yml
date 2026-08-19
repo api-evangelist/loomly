@@ -1,0 +1,133 @@
+generated: '2026-08-13'
+method: probed
+source: Direct HTTP probes of every Loomly host, 2026-08-13
+name: Loomly Well-Known Probe
+description: >-
+  A recorded absence. Every RFC 8615 well-known path was probed on every Loomly
+  host and every one returned 404. No WellKnown, SecurityTxt, APICatalog or
+  AgentCard pointer is emitted in apis.yml, because none of these documents is
+  served.
+hosts_probed:
+  - www.loomly.com
+  - loomly.com
+  - app.loomly.com
+  - status.loomly.com
+result: no-hits
+probes:
+  - host: www.loomly.com
+    path: /.well-known/security.txt
+    status: 404
+    file: null
+  - host: www.loomly.com
+    path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - host: www.loomly.com
+    path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - host: www.loomly.com
+    path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - host: www.loomly.com
+    path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - host: www.loomly.com
+    path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - host: www.loomly.com
+    path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - host: www.loomly.com
+    path: /.well-known/agent.json
+    status: 404
+    file: null
+  - host: loomly.com
+    path: /.well-known/security.txt
+    status: 404
+    file: null
+  - host: loomly.com
+    path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - host: loomly.com
+    path: /.well-known/agent.json
+    status: 404
+    file: null
+  - host: app.loomly.com
+    path: /.well-known/security.txt
+    status: 404
+    file: null
+  - host: app.loomly.com
+    path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - host: app.loomly.com
+    path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - host: app.loomly.com
+    path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - host: app.loomly.com
+    path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - host: app.loomly.com
+    path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - host: app.loomly.com
+    path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - host: app.loomly.com
+    path: /.well-known/agent.json
+    status: 404
+    file: null
+  - host: status.loomly.com
+    path: /.well-known/security.txt
+    status: 404
+    file: null
+  - host: status.loomly.com
+    path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - host: status.loomly.com
+    path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - host: status.loomly.com
+    path: /.well-known/agent.json
+    status: 404
+    file: null
+  - host: api.loomly.com
+    path: '*'
+    status: null
+    file: null
+    note: >-
+      Host does not resolve — NXDOMAIN on 1.1.1.1, 8.8.8.8 and 9.9.9.9. No probe
+      was possible.
+llms_txt:
+  probed:
+    - url: https://www.loomly.com/llms.txt
+      status: 404
+    - url: https://app.loomly.com/llms.txt
+      status: 404
+    - url: https://status.loomly.com/llms.txt
+      status: 404
+  present: false
+notes:
+  - >-
+    www.loomly.com is a HubSpot CMS site; its 404 is a real 404 status with an
+    HTML error page, not a soft 200. app.loomly.com returns a 404 status with the
+    application's SPA shell. Neither is a false-positive hit.
+  - >-
+    Loomly does publish a vulnerability reporting policy, but at
+    https://www.loomly.com/vulnerability_reporting_policy rather than at
+    /.well-known/security.txt, so it is not machine-discoverable.

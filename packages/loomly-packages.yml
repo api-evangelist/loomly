@@ -1,0 +1,80 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  npm registry search, PyPI, RubyGems, and the Loomly GitHub organization
+  (https://github.com/Loomly), 2026-08-13
+name: Loomly Packages
+description: >-
+  A recorded zero. Loomly publishes no client library, SDK, or CLI in any public
+  package registry, and its GitHub organization contains only forks of
+  third-party Ruby/JS tooling used internally. No SDKs pointer is emitted in
+  apis.yml, because there are none.
+package_count: 0
+official_package_count: 0
+packages: []
+registries_searched:
+  - registry: npm
+    query: loomly
+    url: https://registry.npmjs.org/-/v1/search?text=loomly
+    results: 0
+    status: 200
+  - registry: npm
+    query: exact name "loomly"
+    url: https://registry.npmjs.org/loomly
+    results: 0
+    status: 404
+  - registry: pypi
+    query: loomly
+    url: https://pypi.org/pypi/loomly/json
+    results: 0
+    status: 404
+  - registry: rubygems
+    query: loomly
+    url: https://rubygems.org/api/v1/search.json?query=loomly
+    results: 0
+    status: 200
+github_organization:
+  url: https://github.com/Loomly
+  login: Loomly
+  created: '2018-03-10'
+  public_repos: 7
+  first_party_client_libraries: 0
+  repositories:
+    - name: s3_asset_deploy
+      language: Ruby
+      kind: fork of third-party gem
+      url: https://github.com/Loomly/s3_asset_deploy
+    - name: paperclip-av-transcoder
+      language: Ruby
+      kind: fork of third-party gem
+      url: https://github.com/Loomly/paperclip-av-transcoder
+    - name: react-mentions
+      language: JavaScript
+      kind: fork of third-party library
+      url: https://github.com/Loomly/react-mentions
+    - name: stripe-ruby-mock
+      language: Ruby
+      kind: fork of third-party gem
+      url: https://github.com/Loomly/stripe-ruby-mock
+    - name: av
+      language: Ruby
+      kind: fork of third-party gem
+      url: https://github.com/Loomly/av
+    - name: fast-forward-js-action
+      language: TypeScript
+      kind: fork of third-party GitHub Action
+      url: https://github.com/Loomly/fast-forward-js-action
+    - name: aws-ecr-orb
+      language: Shell
+      kind: fork of third-party CircleCI orb
+      url: https://github.com/Loomly/aws-ecr-orb
+  note: >-
+    The org is a real Loomly engineering org (the forks match a Rails + React
+    stack on AWS), but it publishes nothing an integrator can consume.
+notes:
+  - >-
+    Loomly publishes no public API, so the absence of client libraries is a
+    consequence rather than an independent gap.
+  - >-
+    version and published are recorded as null across the board because there is
+    no package to read registry metadata for — checked, nothing to record.
