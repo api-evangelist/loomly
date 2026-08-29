@@ -11,6 +11,17 @@ description: >-
   Loomly Zapier app (12 triggers, 2 actions) over an OAuth 2.0 authorization flow
   at app.loomly.com, and a public read-only status API on status.loomly.com
   operated by SorryApp. Loomly was acquired by Bending Spoons on 2 January 2025.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
