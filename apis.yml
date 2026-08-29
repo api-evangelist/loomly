@@ -42,6 +42,8 @@ accessModel:
     without going through the Zapier app's OAuth flow with a Loomly account.
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/loomly.png
 url: https://raw.githubusercontent.com/api-evangelist/loomly/refs/heads/main/apis.yml
+x-api-posture: no-product-api
+x-api-posture-basis: observed
 created: '2026-06-13'
 modified: '2026-08-13'
 specificationVersion: '0.23'
