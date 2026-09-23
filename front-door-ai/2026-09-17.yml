@@ -1,0 +1,27 @@
+# Front Door AI Index — loomly — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: loomly
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.loomly.com
+  final_host: www.loomly.com
+  ownership: own
+  owner: loomly
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 17
+  host_score: 17
+  density: 27.6
+  words: 616
+  tiers:
+    agentic: 2
+    core: 15
+    model: 0
+  ambiguous: 1
+  top_terms:
+    AI: 15
+    AI assistant: 2
+    intelligence: 1
