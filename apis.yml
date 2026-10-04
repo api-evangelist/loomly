@@ -49,7 +49,7 @@ modified: '2026-08-13'
 specificationVersion: '0.23'
 type: Index
 tags:
-  - Social-Media
+  - Social Media
   - Content Calendar
   - Scheduling
   - Approval Workflows
@@ -70,6 +70,7 @@ tags_raw:
   - Community Management
   - Marketing
   - Social Media Management
+  - Social-Media
 apis:
   - aid: loomly:loomly-status-api
     name: Loomly Status API
