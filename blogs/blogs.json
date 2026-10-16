@@ -9,13 +9,6 @@
       "method": "discovered"
     },
     {
-      "source": "https://loomly.zendesk.com/hc/en-us/requests/new",
-      "feed_url": "https://loomly.zendesk.com/hc/en-us/requests/new",
-      "title": "",
-      "saved": 0,
-      "method": "none"
-    },
-    {
       "source": "https://www.loomly.com/blog/rss.xml",
       "feed_url": "https://www.loomly.com/blog/rss.xml",
       "title": "",
@@ -23,11 +16,11 @@
       "method": "feed"
     },
     {
-      "source": "https://www.linkedin.com/company/loomly",
+      "source": "https://loomly.zendesk.com/hc/en-us/requests/new",
       "error": "HTTPError"
     }
   ],
-  "fetched": "2026-10-03T12:30:02Z",
+  "fetched": "2026-10-10T13:15:00Z",
   "post_count": 5,
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
