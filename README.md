@@ -64,49 +64,117 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Loomly is a social media management and brand success platform that helps marketing teams plan, create, approve, schedule and publish content across Facebook, Instagram, LinkedIn, TikTok, YouTube, Pinterest, Snapchat, Threads, Bluesky and Google Business Profile, with collaboration and approval workflows, a content library, analytics and a community-management inbox. Loomly was acquired by Bending Spoons on 2 January 2025.
+Loomly is a social media management and brand success platform for planning, creating, approving, scheduling and publishing content across Facebook, Instagram, LinkedIn, TikTok, YouTube, Pinterest, Snapchat, Threads, Bluesky and Google Business Profile, with collaboration and approval workflows, a content library, analytics and a community-management inbox. Loomly publishes no public developer API, API reference or machine-readable specification. Its only programmable surfaces are a partner-gated platform API reached through the Loomly Zapier app (12 triggers, 2 actions) over an OAuth 2.0 authorization flow at app.loomly.com, and a public read-only status API on status.loomly.com operated by SorryApp. Loomly was acquired by Bending Spoons on 2 January 2025.
 
-## API
+**Areas:** Social Media · Content Calendar · Scheduling · Approval Workflows · Analytics · Brand Management · Publishing · Community Management · Marketing · Social Media Management
 
-**Loomly publishes no public developer API.** There is no developer portal, no API reference, and no machine-readable specification of any kind — no OpenAPI, AsyncAPI, GraphQL SDL, JSON Schema or Postman collection. `https://www.loomly.com/developers` and `/api` both return 404, and every well-known and spec path was probed on `www.loomly.com`, `loomly.com`, `app.loomly.com` and `status.loomly.com` with no hits (see [well-known/loomly-well-known.yml](well-known/loomly-well-known.yml)).
+## Loomly on APIs.io
 
-Two surfaces exist:
+Everything profiled for Loomly is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/loomly/](https://apis.io/providers/loomly/)** — or go straight to one of the APIs or properties below.
 
-- **Loomly Platform API (partner-gated).** An OAuth 2.0 protected API backs the Loomly Zapier app — 12 triggers and 2 write actions, catalogued in [integrations/loomly-zapier.yml](integrations/loomly-zapier.yml). The only publicly reachable part of it is the authorization endpoint at `https://app.loomly.com/oauth/authorize`, which 302s to sign-in. No base URL, scopes, token endpoint or contract is published.
-- **Loomly Status API.** A public, read-only, unauthenticated JSON API at `https://status.loomly.com/api/v1` covering system state, four service components and incident notices. It is operated for Loomly by SorryApp.
+### APIs (2)
 
-> **Correction (2026-08-13).** An earlier automated pass recorded a "Loomly Core REST API" at `https://api.loomly.com/v1` with `/calendars` and `/posts` endpoints, OAuth 2.0 bearer tokens and webhook support. That host does not resolve — NXDOMAIN on 1.1.1.1, 8.8.8.8 and 9.9.9.9 — and no Loomly page documents those endpoints. Those claims have been removed from every artifact in this repo.
+- [Loomly Status API](https://apis.io/apis/loomly/loomly-status-api/) — Public, read-only, unauthenticated JSON API for the Loomly status page, exposing overall system state, the four service components (Publishing, Analytics,…
+- [Loomly Platform API (partner-gated)](https://apis.io/apis/loomly/loomly-platform-api/) — Loomly operates an OAuth 2.0 protected platform API that backs its Zapier app — 12 triggers (new post, post state updated, post publish…
 
-## Plans
+### Published properties
 
-- **Free** — $0 — 1 user, 3 social accounts, 5 posts/month
-- **Starter** — $49/month billed annually ($65 monthly) — 12 social accounts, 3 users, unlimited calendars
-- **Beyond** — $249/month billed annually ($332 monthly) — 60 social accounts, unlimited users, custom workflows
-- **Enterprise** — Custom pricing — 61+ social accounts, priority support
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-25% saving on annual billing; 50% lifetime nonprofit discount. See [plans/loomly-plans-pricing.yml](plans/loomly-plans-pricing.yml).
+#### Security (4)
 
-## Rate Limits
+Authentication, trust centre, and vulnerability disclosure.
 
-Loomly publishes no API rate limits. The vendor status API documents 10 requests per second per token with a 429 on exhaustion, and no rate-limit response headers are returned on the anonymous status surface. Loomly's real published throughput constraints are commercial plan quotas. See [rate-limits/loomly-rate-limits.yml](rate-limits/loomly-rate-limits.yml).
+- [Loomly Authentication](https://apis.io/security/loomly/loomly-authentication/)
+- [Loomly Domain Security](https://apis.io/security/loomly/loomly-domain-security/)
+- [Loomly Trust Center](https://apis.io/security/loomly/loomly-trust-center/)
+- [Loomly Vulnerability Disclosure](https://apis.io/security/loomly/loomly-vulnerability-disclosure/)
 
-## Security
+#### Plans and pricing (1)
 
-Loomly publishes a [vulnerability reporting policy](https://www.loomly.com/vulnerability_reporting_policy) (email `security@loomly.com` for a disclosure form; no bug bounty, no published safe harbor) and a [security page](https://www.loomly.com/security) covering encryption, annual third-party penetration testing, 2FA and named subprocessors. Note that the ISO 27001, PCI DSS Level 1 and SOC 1/2/3 certifications quoted on that page belong to **AWS**, Loomly's data-center provider — not to Loomly. Loomly's own compliance claim is PCI-DSS as a card-not-present merchant via Stripe. See [security/](security/) and [conformance/loomly-conformance.yml](conformance/loomly-conformance.yml).
+Published plans, tiers and prices.
 
-## FinOps
+- [Loomly Plans Pricing](https://apis.io/plans/loomly/loomly-plans-pricing/)
 
-Key cost optimization: stay under 12 social accounts and 3 users on Starter to avoid a 408% cost jump to Beyond. Annual billing saves 25%. Nonprofits qualify for a 50% lifetime discount. There is no metered API cost to manage. See [finops/loomly-finops.yml](finops/loomly-finops.yml).
+#### Rate limits (1)
 
-## Links
+Published request limits.
 
-- Website: https://www.loomly.com
-- Help Center: https://loomly.zendesk.com/hc/en-us/
-- Integrations: https://www.loomly.com/integrations
-- Zapier app: https://zapier.com/apps/loomly/integrations
-- Pricing: https://www.loomly.com/pricing
-- Status: https://status.loomly.com
-- Blog: https://www.loomly.com/blog
-- GitHub: https://github.com/Loomly
-- LinkedIn: https://www.linkedin.com/company/loomly
-- X: https://x.com/LoomlySocial
+- [Loomly Rate Limits](https://apis.io/rate-limits/loomly/loomly-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Loomly Finops](https://apis.io/finops/loomly/loomly-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.loomly.com)
+- [Documentation](https://loomly.zendesk.com/hc/en-us/)
+- [Getting started](https://loomly.zendesk.com/hc/en-us/sections/38524587224347-Get-started)
+- [Pricing](https://www.loomly.com/pricing)
+- [Sign up](https://app.loomly.com/signup)
+- [Support](https://loomly.zendesk.com/hc/en-us/requests/new)
+- [Blog](https://www.loomly.com/blog)
+- [Terms of service](https://www.loomly.com/terms)
+- [Privacy policy](https://www.loomly.com/privacy)
+- [GitHub](https://github.com/Loomly)
+- [Status](https://status.loomly.com)
+
+## API Evangelist rating
+
+**Kin Score 46.0** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 65.8 |
+| Developer ergonomics | 40.5 |
+| Access clarity | 92.1 |
+
+**Agent readiness 5.0** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/loomly/](https://apis.io/providers/loomly/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Loomly: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/loomly/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
